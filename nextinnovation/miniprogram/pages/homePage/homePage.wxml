@@ -8,4 +8,4 @@
 
 </view>
 
-<button class="btn-add">NEW MEMO</button>
+<button class="btn-add" data-url="/pages/addMemo/addMemo" bindtap="toPage">NEW MEMO</button>
