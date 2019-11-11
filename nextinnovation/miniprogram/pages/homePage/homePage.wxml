@@ -1,0 +1,11 @@
+<!--miniprogram/pages/homePage/homePage.wxml-->
+<view class="page-container">
+
+  <view class="memo-item" wx:for="{{memoList}}" wx:key="index" bindlongtap="onLongtap">
+    <view class="memo-title">{{item.title}}</view>
+    <view class="memo-content">{{item.content}}</view>
+  </view>
+
+</view>
+
+<button class="btn-add">NEW MEMO</button>
