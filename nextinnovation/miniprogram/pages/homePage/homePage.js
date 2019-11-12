@@ -124,6 +124,15 @@ Page({
       })
       .get({
         success: function(res) {
+          // todo
+          // for(const item of res.data){
+          //   const arr = item.content.split('&hc')
+          //   for(let cItem of arr){
+          //     cItem = `<p>${cItem}</p>`
+          //   }
+          //   item.content = arr.join()
+          // }
+          // console.log(res.data)
           _self.setData({
             memoList: res.data
           })

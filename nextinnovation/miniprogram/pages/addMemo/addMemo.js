@@ -69,7 +69,7 @@ Page({
 
   onSubmit(e) {
     const title = e.detail.value.title
-    const content = e.detail.value.content
+    let content = e.detail.value.content
     if (!title || !content) {
       wx.showToast({
         title: 'Please enter something',
@@ -79,6 +79,8 @@ Page({
       })
       return
     }
+
+    content = content.split('\n').join('&hc')
 
     db.collection('memos').add({
         // data 字段表示需新增的 JSON 数据
