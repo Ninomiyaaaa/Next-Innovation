@@ -1,17 +1,14 @@
 // miniprogram/pages/homePage/homePage.js
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    memoList: [{
-      title: 'FPX wins the game',
-      content: 'FPX 3:0 beat G2 Esports. Congratulations! FPX 3:0 beat G2 Esports. Congratulations! FPX 3:0 beat G2 Esports. Congratulations!'
-    }, {
-      title: 'FPX wins the game',
-      content: 'GG to G2 as well'
-    }]
+    memoList: []
   },
 
   /**
@@ -25,14 +22,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    this.onGetOpenid()
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.loadData()
   },
 
   /**
@@ -53,7 +50,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function() {
-
+    this.loadData()
   },
 
   /**
@@ -70,13 +67,25 @@ Page({
 
   },
 
-  onLongtap(e){
+  onLongtap(e) {
+    const _self = this
     wx.showModal({
       title: 'Wanna Delete?',
       content: 'Let\'s finish the job',
       success(res) {
         if (res.confirm) {
-          console.log(e)
+          db.collection('memos').doc(e.currentTarget.dataset.id).remove({
+            success: function(res) {
+              wx.showToast({
+                title: 'Done',
+                duration: 1500,
+                mask: true
+              })
+              setTimeout(function() {
+                _self.loadData()
+              }, 1500)
+            }
+          })
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
@@ -84,10 +93,49 @@ Page({
     })
   },
 
-  toPage(e){
+  toPage(e) {
     wx.navigateTo({
       url: e.currentTarget.dataset.url,
     })
   },
+
+  onGetOpenid: function() {
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        app.globalData.openid = res.result.openid
+        this.loadData()
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
+  },
+
+  loadData() {
+    const _self = this
+    wx.showLoading({
+      title: 'Loading',
+    })
+    db.collection('memos').where({
+        _openid: app.globalData.openid
+      })
+      .get({
+        success: function(res) {
+          _self.setData({
+            memoList: res.data
+          })
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+        },
+        fail: err => {
+          console.log(err)
+          wx.hideLoading()
+          wx.stopPullDownRefresh()
+        }
+      })
+  }
 
 })

@@ -1,11 +1,11 @@
 <!--miniprogram/pages/addMemo/addMemo.wxml-->
 <view class="page-container">
-  <form class="form-container">
+  <form class="form-container" bindsubmit="onSubmit">
     <view class="title-box">
       <input name="title" class="input" placeholder="title" placeholder-class="placeholder"></input>
     </view>
     <view class="content-box">
-      <textarea name="content" class="input" placeholder="content" placeholder-class="placeholder" auto-height maxlength="-1" />
+      <textarea name="content" class="input" placeholder="content" placeholder-class="placeholder" maxlength="300" />
     </view>
     <button form-type="submit" class="btn-add">Submit</button>
   </form>
