@@ -74,7 +74,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: spinning 2s linear;
+  animation: spinning 3s linear infinite;
 }
 
 .loading-eyes {
@@ -86,7 +86,7 @@
   height: 20rpx;
   border-radius: 50%;
   background-color: #7cc64b;
-  margin: 0 20rpx;
+  margin: 0 18rpx;
 }
 
 .loading-mouth {
@@ -100,10 +100,9 @@
 
 @keyframes spinning {
   from {
-    transform: rotateZ(0);
+    transform: rotate(0);
   }
-
   to {
-    transform: rotateZ(360 deg);
+    transform: rotate(360deg);
   }
 }
