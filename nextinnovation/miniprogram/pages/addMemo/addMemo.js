@@ -68,9 +68,8 @@ Page({
   },
 
   onSubmit(e) {
-    const title = e.detail.value.title
     let content = e.detail.value.content
-    if (!title || !content) {
+    if (!content) {
       wx.showToast({
         title: 'Please enter something',
         icon: 'none',
@@ -85,8 +84,8 @@ Page({
     db.collection('memos').add({
         // data 字段表示需新增的 JSON 数据
         data: {
-          title,
-          content
+          content,
+          createTime: db.serverDate() 
         }
       })
       .then(res => {

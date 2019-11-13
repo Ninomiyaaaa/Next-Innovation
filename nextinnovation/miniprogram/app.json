@@ -24,7 +24,8 @@
   },
   "usingComponents": {
     "van-swipe-cell": "/miniprogram_npm/vant-weapp/swipe-cell/index",
-    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index"
+    "van-notice-bar": "/miniprogram_npm/vant-weapp/notice-bar/index",
+    "van-overlay": "/miniprogram_npm/vant-weapp/overlay/index"
   },
   "sitemapLocation": "sitemap.json"
 }

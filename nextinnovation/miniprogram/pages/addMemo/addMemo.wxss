@@ -2,6 +2,7 @@
 
 .page-container {
   height: 100%;
+  background-color: #fefbf0;
 }
 
 .form-container {
@@ -27,7 +28,7 @@
   border: solid 1px #eee;
   border-radius: 10rpx;
   padding: 20rpx;
-  height: 890rpx;
+  height: 1010rpx;
 }
 
 .input {

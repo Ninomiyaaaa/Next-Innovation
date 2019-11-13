@@ -1,7 +1,9 @@
 /**app.wxss**/
+
 page {
   width: 100%;
   height: 100%;
+  font-family: "Microsoft YaHei";
 }
 
 .container {
@@ -12,4 +14,9 @@ page {
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
-} 
+}
+
+@font-face {
+  font-family: '851tegaki';
+  src: url("https://6e65-nextinnovation-llbz5-1300636917.tcb.qcloud.la/851tegaki_zatsu_normal_0883.ttf?sign=2d9f0b89f13fa1193237cf35d8eb2ec2&t=1573625070") format('truetype');
+}

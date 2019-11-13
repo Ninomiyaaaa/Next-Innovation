@@ -8,16 +8,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    memoList: []
+    memoList: [],
+    showLoading: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-
+    const _self = this
+    setTimeout(function() {
+      _self.setData({
+        showLoading: true
+      })
+    },2000)
   },
 
+  onClickHide() {
+    this.setData({ show: false });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -78,12 +87,12 @@ Page({
             success: function(res) {
               wx.showToast({
                 title: 'Done',
-                duration: 1500,
+                duration: 500,
                 mask: true
               })
               setTimeout(function() {
                 _self.loadData()
-              }, 1500)
+              }, 500)
             }
           })
         } else if (res.cancel) {
@@ -120,31 +129,33 @@ Page({
       title: 'Loading',
     })
     db.collection('memos').where({
-        _openid: app.globalData.openid
-      })
-      .get({
-        success: function(res) {
-          // todo
-          // for(const item of res.data){
-          //   const arr = item.content.split('&hc')
-          //   for(let cItem of arr){
-          //     cItem = `<p>${cItem}</p>`
-          //   }
-          //   item.content = arr.join()
-          // }
-          // console.log(res.data)
-          _self.setData({
-            memoList: res.data
-          })
-          wx.hideLoading()
-          wx.stopPullDownRefresh()
-        },
-        fail: err => {
-          console.log(err)
-          wx.hideLoading()
-          wx.stopPullDownRefresh()
+      _openid: app.globalData.openid
+    }).orderBy('createTime', 'desc').get({
+      success: function(res) {
+        for (const item of res.data) {
+          const arr = item.content.split('&hc')
+          for (let i = 0; i < arr.length; i++) {
+            arr[i] = `<p>${arr[i]}</p>`
+          }
+          item.content = arr.join('')
         }
-      })
+
+        _self.setData({
+          memoList: res.data
+        })
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      },
+      fail: err => {
+        console.log(err)
+        wx.hideLoading()
+        wx.stopPullDownRefresh()
+      }
+    })
+  },
+
+  onTouchmove(){
+    return false
   }
 
 })

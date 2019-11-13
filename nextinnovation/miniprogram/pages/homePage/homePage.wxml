@@ -5,9 +5,20 @@
   </view>
   <view wx:else>
     <view class="memo-item" wx:for="{{memoList}}" wx:key="index" bindlongtap="onLongtap" data-id="{{item._id}}">
-      <view class="memo-title">{{item.title}}</view>
-      <view class="memo-content">{{item.content}}</view>
+      <view class="memo-content">
+        <rich-text nodes="{{item.content}}"></rich-text>
+      </view>
     </view>
+  </view>
+</view>
+
+<view class="loading" catchtouchmove="onTouchmove">
+  <view class="loading-circle">
+    <view class="loading-eyes">
+      <view class="left"></view>
+      <view class="right"></view>
+    </view>
+    <view class="loading-mouth"></view>
   </view>
 </view>
 

@@ -1,10 +1,13 @@
 /* miniprogram/pages/homePage/homePage.wxss */
 
 .page-container {
-  padding: 30rpx;
+  padding: 30rpx 30rpx 120rpx;
+  background-color: #fefbf0;
+  min-height: 100%;
+  box-sizing: border-box;
 }
 
-.hint-blank{
+.hint-blank {
   text-align: center;
   font-size: 60rpx;
   font-weight: bold;
@@ -34,14 +37,73 @@
   box-sizing: border-box;
   box-shadow: 0rpx 14rpx 24rpx -2rpx rgba(185, 201, 232, 1);
   border-radius: 20rpx;
-  background-color: #f5f5f5;
+  background-color: #faf9de;
   margin-bottom: 30rpx;
   line-height: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "851tegaki";
+  font-weight: 300;
+  font-size: 44rpx;
 }
 
-.memo-title{
-  
+.memo-title {
+  border-bottom: solid 1px #eee;
+}
+
+.loading {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.loading-circle {
+  width: 320rpx;
+  height: 320rpx;
+  border-radius: 50%;
+  background-color: #8adc54;
+  position: absolute;
+  bottom: calc(50% - 160rpx + 90rpx);
+  left: calc(50% - 160rpx);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: spinning 2s linear;
+}
+
+.loading-eyes {
+  display: flex;
+}
+
+.loading-eyes view {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 50%;
+  background-color: #7cc64b;
+  margin: 0 20rpx;
+}
+
+.loading-mouth {
+  width: 40rpx;
+  height: 20rpx;
+  background-color: #7cc64b;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  margin-top: 26rpx;
+}
+
+@keyframes spinning {
+  from {
+    transform: rotateZ(0);
+  }
+
+  to {
+    transform: rotateZ(360 deg);
+  }
 }
