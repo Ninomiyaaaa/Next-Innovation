@@ -8,24 +8,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    memoList: [],
-    showLoading: false
+    memoList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    const _self = this
-    setTimeout(function() {
-      _self.setData({
-        showLoading: true
-      })
-    },2000)
+
   },
 
   onClickHide() {
-    this.setData({ show: false });
+    this.setData({
+      show: false
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -76,6 +72,7 @@ Page({
 
   },
 
+  // 长按删除
   onLongtap(e) {
     const _self = this
     wx.showModal({
@@ -154,7 +151,7 @@ Page({
     })
   },
 
-  onTouchmove(){
+  onTouchmove() {
     return false
   }
 

@@ -1,0 +1,10 @@
+<!--components/loading/loading.wxml-->
+<view class="loading" catchtouchmove="onTouchmove">
+  <view class="loading-circle">
+    <view class="loading-eyes">
+      <view class="left"></view>
+      <view class="right"></view>
+    </view>
+    <view class="loading-mouth"></view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<!--components/drawer/drawer.wxml-->
+<view class="left-bar" bindtouchmove="onRightDrag"></view>
+
+<view class="drawer-overlay" wx:if="{{showDrawer}}" bindtap="closeDrawer">
+
+</view>
+
+<view class="drawer-container {{showDrawer?'show':''}}">aaa</view>
