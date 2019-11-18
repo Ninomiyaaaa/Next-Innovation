@@ -2,7 +2,12 @@
 <view class="left-bar" bindtouchmove="onRightDrag"></view>
 
 <view class="drawer-overlay" wx:if="{{showDrawer}}" bindtap="closeDrawer">
-
 </view>
 
-<view class="drawer-container {{showDrawer?'show':''}}">aaa</view>
+<view class="drawer-container {{showDrawer?'show':''}}">
+  <view class="avatar-container">
+    <image class="avatar" src="{{avatar}}"></image>
+    <text class="nick-name">{{nickName}}</text>
+  </view>
+
+</view>
