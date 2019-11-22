@@ -54,5 +54,11 @@
     </navigator>
   </view>
 
+  <view class="uploader">
+    <navigator url="/pages/outlinks/outlinks" open-type="navigate" class="uploader-text">
+      <text>打开页面</text>
+    </navigator>
+  </view>
+
 
 </view>
